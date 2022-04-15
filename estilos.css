@@ -1,0 +1,38 @@
+* {
+    box-sizing:border-box;
+}
+
+.body {
+    max-width: 896px;
+    max-height: 800px;
+}
+
+.container{
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.topo{
+    background-color: white;
+    height: 110px;
+    width: 100%;
+
+}
+
+.meio{
+    background-color: orange;
+    height: 615px;
+    margin-top: 50px;
+}
+
+.baixo {
+    background-color: black;
+    height: 125px;
+    width: 100%;
+}
+
+.mensagem{
+    
+}
