@@ -25,6 +25,9 @@
     background-color: orange;
     height: 615px;
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .baixo {
