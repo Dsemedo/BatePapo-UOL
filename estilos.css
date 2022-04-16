@@ -33,6 +33,21 @@
     width: 100%;
 }
 
-.mensagem{
-    
+.status {
+    background-color: #DCDCDC;
+    height: 20px;
+}
+
+.reservadas{
+    background-color: #FFDEDE;
+    height: 20px;
+}
+
+.normal {
+    background-color: #FFFFFF;
+    height: 20px;
+}
+
+.pergunta {
+    display: flex;
 }
