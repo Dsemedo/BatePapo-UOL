@@ -1,49 +1,40 @@
-const pergunta = document.querySelector(".pergunta");
-prompt(pergunta.innerHTML);	 
+let user;
 
 function entrada(){ 
-const usuario = document.querySelector(".pergunta").value;
-const pessoa = {name: usuario};
-const promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', pessoa);
-console.log(promessa);
-promessa.then(processarSucesso);
-promessa.catch(processarErro);
+let user = prompt("Como deseja ser chamado no Bate Papo mais famoso do mundo?");
+let login = {
+	name:user
 }
-
-function processarSucesso(usuario) {
-	console.log(usuario.data);
-}
-
-function processarErro(){
-	console.log(usuario.data);	
+let promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', login);
+console.log(login);
+promessa.then(conectado);
+promessa.catch(entrada);
 }
 
 function conectado(){ 
-	const pessoa = {name: usuario};
-	const manterConectado = axios.post('https://mock-api.driven.com.br/api/v6/uol/status', pessoa);
-	console.log(manterConectado);
-	promessa.then(processarResposta);
-	promessa.catch(processarErro);
-	setInterval(4000, pessoa);
+	let status = {name:user};
+	axios.post('https://mock-api.driven.com.br/api/v6/uol/status', status);
+	console.log(conectado);
+	setInterval(4000, status);
 }
 
 
 
-function erroInicio(){
-	if (error.response.status === 400){
-		alert("Usuario já ezistente, tente outro nome")
-	} 
-}
+// function erroInicio(){
+// 	if (error.response.status === 400){
+// 		alert("Usuario já ezistente, tente outro nome")
+// 	} 
+// }
 
 
-const buscarMsg = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+// const buscarMsg = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
 
-function tratarSucesso(resposta) {
-	console.log("Resposta recebida com sucesso!");
-}
+// function tratarSucesso(resposta) {
+// 	console.log("Resposta recebida com sucesso!");
+// }
 
-function tratarFalha(erro) {
-	console.log("Resposta recebida com falha!");
-}
+// function tratarFalha(erro) {
+// 	console.log("Resposta recebida com falha!");
+// }
 
-const enviarMsg = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages')
+// const enviarMsg = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages')
