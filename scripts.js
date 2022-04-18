@@ -1,56 +1,61 @@
 let user;
+let receberMsg;
+let status;
 
-function entrada(){ 
-let user = prompt("Como deseja ser chamado no Bate Papo mais famoso do mundo?");
-let login = {
-	name:user
+function entrada() {
+	let user = prompt("Como deseja ser chamado no Bate Papo mais famoso do mundo?");
+	let login = {
+		name: user
 	}
-let promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', login);
-console.log(login);
-promessa.then(conectado);
-promessa.catch(entrada);
+	let promessa = axios.post('https://mock-api.driven.com.br/api/v6/uol/participants', login);
+	console.log(entrada);
+	promessa.then(carregarMsg());
+	promessa.catch(error());
 }
 entrada();
+console.log(entrada);
 
-function conectado(){ 
-	let status = {name:user};
-	axios.post('https://mock-api.driven.com.br/api/v6/uol/status', status);
-	console.log(conectado);
-	setInterval(3000, status);
-}
-conectado();
-
-function buscarMsgs(dados){
-	let receberMsg = dados.data;
-	const carregarMsg = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages', receberMsg);
-	console.log(carregarMsg);
-	for (let i = 0; i < receberMsg.length; i++){
-		console.log("buscarMsgs()");		
-	const tiposMensagem = buscarMsgs[i].type;
-	// let chat = document.querySelector(".mensagem");
-	if(tiposMensagem === "status"){
-		chat.innerHTML += `<div class="status">
-		<span>${receberMsg[i].time}</span>
-		<span>${receberMsg[i].from}</span>
-		</div>`
-		}
-		else if(tiposMensagem === "message"){
-			chat.innerHTML += `<div class="paraTodos">
-			<span>${receberMsg[i].time}</span>
-			<span>${receberMsg[i].from}</span>
-			
-			</div>`
-			}
-		else if(tiposMensagem === "private_message"){
-				chat.innerHTML += `<div class="reservadas">
-				<span>${receberMsg[i].time}</span>
-				<span>${receberMsg[i].from}</span>
-				</div>`
-			}
+function error(){
+	if (error.response.status === 400){
+		user = alert("Nome já utilizado, escolha outro");
+		entrada();
 	}
-
-
 }
+
+
+function carregarMsg() {
+	const promise = axios.get('https://mock-api.driven.com.br/api/v6/uol/messages');
+	promise.then(buscarMsgs);
+}
+
+function buscarMsgs(dados) {
+	receberMsg = dados.data;
+	console.log(buscarMsgs)
+	const atualizarMsgs = document.querySelector(".mensagem");
+	atualizarMsgs.innerHTML = ""
+	
+	for (let i = 0; i < receberMsg.length; i++) {
+		if (receberMsg[i].type === "status") {
+			atualizarMsgs.innerHTML += `<div class="status">
+			<span>${receberMsg[i].time}  <strong>${receberMsg[i].from}</strong> para  <strong>${receberMsg[i].to}</strong>	${receberMsg[i].text}</span>
+			</div>`
+		}
+		else if (receberMsg[i].type === "message") {
+			atualizarMsgs.innerHTML += `<div class="paraTodos">
+			<span>${receberMsg[i].time}	 <strong>${receberMsg[i].from}</strong> para  <strong>${receberMsg[i].to}</strong>	${receberMsg[i].text}</span>
+			</div>` 
+		}
+		else if (receberMsg[i].type === "private_message") {
+			atualizarMsgs.innerHTML += `<div class="reservadas">
+			<span>${receberMsg[i].time}	 <strong>${receberMsg[i].from}</strong> para  <strong>${receberMsg[i].to}</strong>	${receberMsg[i].text}</span>
+			</div>`
+		}
+	}
+}
+
+// }
+
+// function sendMessage(){}
 
 // function apagarMsg(){
 // 	const msgInicial = document.querySelector(".escreva");
@@ -61,7 +66,7 @@ function buscarMsgs(dados){
 // function erroInicio(){
 // 	if (error.response.status === 400){
 // 		alert("Usuario já eistente, tente outro nome")
-// 	} 
+// 	}
 // }
 
 
@@ -76,8 +81,3 @@ function buscarMsgs(dados){
 // }
 
 // const enviarMsg = axios.post('https://mock-api.driven.com.br/api/v6/uol/messages')
-
-
-
-
-

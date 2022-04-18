@@ -19,21 +19,18 @@
     <div class="logoUol">
         <img src="Fotos/LogoUol.png">
     </div>
-    <div class="logo"><ion-icon name="people-sharp"></ion-icon></div>
+    <div class="logo" onclick=""><ion-icon name="people-sharp"></ion-icon></div>
 </div>
 <div class="meio">
     <div class="mensagem">
-        <div class="status"></div>
-        <div class="paraTodos"></div>
-        <div class="reservadas"></div>
     </div>
 </div>
 <div class="baixo">
     <div class="input"> 
         <div class="escreva">
-        <a onclick="apagarMsg()">     Escreva aqui... </a>
+            <input type="text" class="escreva" placeholder="Escreva aqui..." />
         </div>
-        <div class="botao" onclick="">
+        <div class="botao" onclick="sendMessage()">
             <ion-icon name="paper-plane-outline"></ion-icon>
         </div>
     </div>

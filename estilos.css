@@ -43,7 +43,6 @@ body {
     margin-top: 35px;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
 }
 
 .baixo {
@@ -55,20 +54,36 @@ body {
 
 .mensagem {
     display: flex;
+    flex-direction: column;
     height: 20px;
     width: 100%;
 }
 
-.status {
+.status span{
+    display: flex;
     background-color: #DCDCDC;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    word-wrap:break-word;
 }
 
-.reservadas{
+.reservadas span{
+    display: flex;
     background-color: #FFDEDE;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    word-wrap:break-word;
 }
 
-.paraTodos {
+.paraTodos span{
+    display: flex;
     background-color: #FFFFFF;
+    width: 100%;
+    height: 30px;
+    font-size: 20px;
+    word-wrap:break-word;
 }
 
 .pergunta {
@@ -84,15 +99,16 @@ body {
     position: absolute;
 }
 
-.escreva a{
+.escreva input{
     display: flex;
     flex-direction: row;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
-    height: 40px;
+    height: 50px;
     width: 340px;
     margin-top: 40px;
     margin-left: 10px;
+    border: none;
 }
 
 .botao ion-icon{
